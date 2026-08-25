@@ -1,0 +1,14 @@
+## 忽略仓库根目录【所有一级子文件夹】
+#*/
+## 但是！有一个例外：需要把 .github/ 文件夹取消忽略！
+## workflow 工作流放在 .github 必须提交到main分支
+#!.github/
+
+# 后缀过滤
+*.zip
+*.png
+*.ico
+*.ini
+*.bat
+*.xlsx
+
