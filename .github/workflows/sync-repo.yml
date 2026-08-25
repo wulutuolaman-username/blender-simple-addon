@@ -1,0 +1,21 @@
+name: Sync Repository to Gitee
+on:
+  push:
+    branches: [main]
+    tags: ['*']
+  workflow_dispatch:
+
+jobs:
+  sync-repo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout GitHub Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Mirror to Gitee (HTTPS Only)
+        uses: wearerequired/git-mirror-action@v1
+        with:
+          source-repo: ${{ github.event.repository.html_url }}
+          destination-repo: "https://wulutuolaman:${{ secrets.GITEE_TOKEN }}@gitee.com/wulutuolaman/blender-simple-addon.git"
